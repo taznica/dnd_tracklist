@@ -1,8 +1,7 @@
 import 'dart:io';
-
+import 'package:cross_file/cross_file.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/material.dart';
-import 'package:cross_file/cross_file.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 import 'package:window_size/window_size.dart';
 
