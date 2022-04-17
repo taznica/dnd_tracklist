@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
 class tracklistURLTextField extends StatelessWidget {
   const tracklistURLTextField({
     Key? key,
@@ -14,24 +16,24 @@ class tracklistURLTextField extends StatelessWidget {
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Color(0xff434954),
+            color: textFieldColor,
           ),
           borderRadius: BorderRadius.circular(32.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Color(0xff434954),
+            color: textFieldColor,
             width: 2.0,
           ),
           borderRadius: BorderRadius.circular(32.0),
         ),
         hintText: " Tracklist URL (Google Sheets)",
         hintStyle: const TextStyle(
-          color: Color(0xff434954),
+          color: textFieldColor,
           fontSize: 14.0,
         ),
       ),
-      cursorColor: const Color(0xff434954),
+      cursorColor: textFieldColor,
       cursorWidth: 1.5,
     );
   }

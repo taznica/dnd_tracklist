@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
 class DropTargetArea extends StatelessWidget {
   const DropTargetArea({
     Key? key,
@@ -17,7 +19,7 @@ class DropTargetArea extends StatelessWidget {
         height: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(32.0),
-          color: _dragging ? const Color(0xff111318) : const Color(0xff1a1d23),
+          color: _dragging ? dropTargetAreaDraggingColor : dropTargetAreaColor,
         ),
         child: Stack(
           children: const [

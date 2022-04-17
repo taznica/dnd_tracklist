@@ -6,6 +6,7 @@ import 'package:window_size/window_size.dart';
 import 'components/AddButton.dart';
 import 'components/AudioFileDropTarget.dart';
 import 'components/tracklistURLTextField.dart';
+import 'constants/colors.dart';
 
 void main() {
   // runApp()の前に処理を記述するために必要
@@ -30,10 +31,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xff2b303b),
+        scaffoldBackgroundColor: bgColor,
         textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: const Color(0xffa7adb9),
-              displayColor: const Color(0xffa7adb9),
+              bodyColor: textColor,
+              displayColor: textColor,
             ),
       ),
       home: Scaffold(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
 class AddButton extends StatelessWidget {
   const AddButton({
     Key? key,
@@ -13,10 +15,8 @@ class AddButton extends StatelessWidget {
       child: TextButton(
         onPressed: () {},
         style: ButtonStyle(
-          foregroundColor:
-              MaterialStateProperty.all<Color>(const Color(0xffffffff)),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(const Color(0xff55afa6)),
+          foregroundColor: MaterialStateProperty.all<Color>(buttonTextColor),
+          backgroundColor: MaterialStateProperty.all<Color>(buttonBgColor),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(32.0),
