@@ -2,7 +2,7 @@ import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 
-import 'metadataDataRow.dart';
+import 'metadata_data_row.dart';
 
 class MetadataDataTable extends StatelessWidget {
   const MetadataDataTable(

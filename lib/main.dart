@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:window_size/window_size.dart';
 
-import 'components/AddButton.dart';
-import 'components/AudioFileDropTarget.dart';
-import 'components/tracklistURLTextField.dart';
+import 'components/add_button.dart';
+import 'components/audio_file_drop_target.dart';
+import 'components/tracklist_url_text_field.dart';
 import 'constants/colors.dart';
 
 void main() {

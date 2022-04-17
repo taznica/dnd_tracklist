@@ -5,8 +5,8 @@ import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 
-import 'dropTargetArea.dart';
-import 'metadataDataTable.dart';
+import 'drop_target_area.dart';
+import 'metadata_data_table.dart';
 
 class AudioFileDropTarget extends StatefulWidget {
   const AudioFileDropTarget({Key? key}) : super(key: key);
