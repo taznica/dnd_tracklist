@@ -3,6 +3,9 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  desktop_drop
+  flutter_media_metadata
+  window_size
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
