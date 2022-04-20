@@ -17,7 +17,7 @@ void main() {
 
   if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
     setWindowFrame(const Rect.fromLTWH(100, 100, 300, 900));
-    setWindowMinSize(const Size(200, 900));
+    setWindowMinSize(const Size(300, 900));
     setWindowMaxSize(const Size(400, 1200));
   }
   runApp(const MyApp());
