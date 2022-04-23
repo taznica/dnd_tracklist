@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
                   AudioFileDropTarget(),
                   Padding(
                     padding: EdgeInsets.only(top: 16.0),
-                    child: tracklistURLTextField(),
+                    child: TracklistURLTextField(),
                   ),
                   Padding(
                     padding: EdgeInsets.all(32.0),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
 
-class tracklistURLTextField extends StatelessWidget {
-  const tracklistURLTextField({
+class TracklistURLTextField extends StatelessWidget {
+  const TracklistURLTextField({
     Key? key,
   }) : super(key: key);
 
