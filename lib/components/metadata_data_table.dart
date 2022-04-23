@@ -1,4 +1,3 @@
-import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 
@@ -6,10 +5,9 @@ import 'metadata_data_row.dart';
 
 class MetadataDataTable extends StatelessWidget {
   const MetadataDataTable(
-      {Key? key, required this.xFile, required this.metadata})
+      {Key? key, required this.metadata})
       : super(key: key);
 
-  final XFile? xFile;
   final Metadata metadata;
 
   @override
@@ -27,9 +25,22 @@ class MetadataDataTable extends StatelessWidget {
             metadata.trackArtistNames != null
                 ? metadata.trackArtistNames!.join(", ")
                 : "null"),
-        MetadataDataRow("Title", metadata.trackName ?? "null"),
-        MetadataDataRow("File name", xFile != null ? xFile!.name : "Drop here")
+        MetadataDataRow("Title", getTitle()),
       ],
     );
+  }
+
+  String getTitle() {
+    if (metadata.trackName != null) {
+      return metadata.trackName!;
+    }
+    else if(metadata.filePath != null) {
+      var reg = RegExp(r"[^/]+(?=\.)");
+      String? fileName = reg.allMatches(metadata.filePath!).last.group(0);
+      return fileName ?? "";
+    }
+    else {
+      return "";
+    }
   }
 }

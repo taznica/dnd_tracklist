@@ -60,7 +60,7 @@ class _AudioFileDropTargetState extends State<AudioFileDropTarget> {
 
   showMetadata(Metadata metadata) {
     setState(() {
-      metadataDataTable = MetadataDataTable(xFile: xFile, metadata: metadata);
+      metadataDataTable = MetadataDataTable(metadata: metadata);
     });
   }
 
