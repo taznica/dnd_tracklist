@@ -24,7 +24,7 @@ class MetadataDataTable extends StatelessWidget {
             "Artist",
             metadata.trackArtistNames != null
                 ? metadata.trackArtistNames!.join(", ")
-                : "null"),
+                : ""),
         MetadataDataRow("Title", getTitle()),
       ],
     );
