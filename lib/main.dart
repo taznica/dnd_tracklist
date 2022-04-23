@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_size/window_size.dart';
 
 import 'components/add_button.dart';
@@ -9,7 +9,6 @@ import 'components/audio_file_drop_target.dart';
 import 'components/metadata_data_table.dart';
 import 'components/tracklist_url_text_field.dart';
 import 'constants/colors.dart';
-import 'models/track_model.dart';
 
 void main() {
   // runApp()の前に処理を記述するために必要
@@ -23,10 +22,11 @@ void main() {
     setWindowMinSize(const Size(300, 900));
     setWindowMaxSize(const Size(400, 1200));
   }
-  runApp(ChangeNotifierProvider(
-    create: (context) => TrackModel(),
-    child: const MyApp(),
-  ));
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

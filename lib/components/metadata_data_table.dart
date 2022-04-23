@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/track_model.dart';
+import '../providers/track_provider.dart';
 import 'metadata_data_row.dart';
 
 class MetadataDataTable extends StatelessWidget {
@@ -9,23 +9,25 @@ class MetadataDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DataTable(
-      headingRowHeight: 0,
-      dataRowHeight: 100,
-      columns: [
-        DataColumn(label: Container()),
-        DataColumn(label: Container()),
-      ],
-      rows: [
-        MetadataDataRow(
-          "Artist",
-          context.select((TrackModel trackModel) => trackModel.artist),
-        ),
-        MetadataDataRow(
-          "Title",
-          context.select((TrackModel trackModel) => trackModel.title),
-        ),
-      ],
+    return Consumer(
+      builder: (context, ref, child) => DataTable(
+        headingRowHeight: 0,
+        dataRowHeight: 100,
+        columns: [
+          DataColumn(label: Container()),
+          DataColumn(label: Container()),
+        ],
+        rows: [
+          MetadataDataRow(
+            "Artist",
+            ref.watch(trackProvider).artist,
+          ),
+          MetadataDataRow(
+            "Title",
+            ref.watch(trackProvider).title,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:cross_file/cross_file.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/track_model.dart';
+import '../providers/track_provider.dart';
 import 'drop_target_area.dart';
 
 class AudioFileDropTarget extends StatefulWidget {
@@ -23,46 +23,50 @@ class _AudioFileDropTargetState extends State<AudioFileDropTarget> {
 
   @override
   Widget build(BuildContext context) {
-    return DropTarget(
-      onDragDone: (detail) async {
-        setState(() {
-          xFile = detail.files.first;
-        });
-        MetadataRetriever.fromFile(File(xFile!.path))
-            .then((metadata) => updateTrackModel(context, metadata))
-            .catchError((onError) => updateTrackModelWithBlank(context));
-      },
-      onDragUpdated: (details) {
-        setState(() {
-          offset = details.localPosition;
-        });
-      },
-      onDragEntered: (detail) {
-        setState(() {
-          _dragging = true;
-          offset = detail.localPosition;
-        });
-      },
-      onDragExited: (detail) {
-        setState(() {
-          _dragging = false;
-          offset = null;
-        });
-      },
-      child: Column(
-        children: [
-          DropTargetArea(dragging: _dragging),
-        ],
+    return Consumer(
+      builder: (context, ref, child) => DropTarget(
+        onDragDone: (detail) async {
+          setState(() {
+            xFile = detail.files.first;
+          });
+          MetadataRetriever.fromFile(File(xFile!.path))
+              .then((metadata) => updateTrack(context, ref, metadata))
+              .catchError((onError) => updateTrackWithBlank(context, ref));
+        },
+        onDragUpdated: (details) {
+          setState(() {
+            offset = details.localPosition;
+          });
+        },
+        onDragEntered: (detail) {
+          setState(() {
+            _dragging = true;
+            offset = detail.localPosition;
+          });
+        },
+        onDragExited: (detail) {
+          setState(() {
+            _dragging = false;
+            offset = null;
+          });
+        },
+        child: Column(
+          children: [
+            DropTargetArea(dragging: _dragging),
+          ],
+        ),
       ),
     );
   }
 
-  void updateTrackModel(BuildContext context, Metadata metadata) {
-    context.read<TrackModel>().update(getArtist(metadata), getTitle(metadata));
+  void updateTrack(BuildContext context, WidgetRef ref, Metadata metadata) {
+    ref
+        .read(trackProvider.notifier)
+        .update(getArtist(metadata), getTitle(metadata));
   }
 
-  void updateTrackModelWithBlank(BuildContext context) {
-    context.read<TrackModel>().update("", "");
+  void updateTrackWithBlank(BuildContext context, WidgetRef ref) {
+    ref.read(trackProvider.notifier).update("", "");
   }
 
   String getArtist(Metadata metadata) {
