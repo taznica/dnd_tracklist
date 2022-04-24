@@ -30,8 +30,14 @@ class _AudioFileDropTargetState extends State<AudioFileDropTarget> {
             xFile = detail.files.first;
           });
           MetadataRetriever.fromFile(File(xFile!.path))
-              .then((metadata) => updateTrack(context, ref, metadata))
-              .catchError((onError) => updateTrackWithBlank(context, ref));
+              .then((metadata) => ref.read(trackProvider.notifier).update(
+                    artist: getArtist(metadata),
+                    title: getTitle(metadata),
+                  ))
+              .catchError((onError) => ref.read(trackProvider.notifier).update(
+                    artist: "",
+                    title: "",
+                  ));
         },
         onDragUpdated: (details) {
           setState(() {
@@ -57,16 +63,6 @@ class _AudioFileDropTargetState extends State<AudioFileDropTarget> {
         ),
       ),
     );
-  }
-
-  void updateTrack(BuildContext context, WidgetRef ref, Metadata metadata) {
-    ref
-        .read(trackProvider.notifier)
-        .update(artist: getArtist(metadata), title: getTitle(metadata));
-  }
-
-  void updateTrackWithBlank(BuildContext context, WidgetRef ref) {
-    ref.read(trackProvider.notifier).update(artist: "", title: "");
   }
 
   String getArtist(Metadata metadata) {
