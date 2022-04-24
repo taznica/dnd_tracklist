@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_size/window_size.dart';
 
-import 'components/add_button.dart';
 import 'components/audio_file_drop_target.dart';
-import 'components/metadata_data_table.dart';
-import 'components/tracklist_url_text_field.dart';
+import 'components/track_data_view.dart';
 import 'constants/colors.dart';
 
 void main() {
@@ -53,15 +51,7 @@ class MyApp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   AudioFileDropTarget(),
-                  MetadataDataTable(),
-                  Padding(
-                    padding: EdgeInsets.only(top: 16.0),
-                    child: TracklistURLTextField(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: AddButton(),
-                  ),
+                  TrackDataView(),
                 ],
               ),
             ),

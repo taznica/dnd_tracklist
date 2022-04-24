@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../constants/colors.dart';
 
 class MetadataDataRow extends DataRow {
-  MetadataDataRow(String headerText, String contentText)
-      : super(
+  MetadataDataRow(
+    String headerText,
+    WidgetRef ref,
+    TextEditingController controller,
+  ) : super(
           cells: [
             DataCell(
               Text(
@@ -11,7 +17,30 @@ class MetadataDataRow extends DataRow {
               ),
             ),
             DataCell(
-              Text(contentText),
+              SizedBox(
+                width: 120,
+                child: TextField(
+                  controller: controller,
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                  ),
+                  decoration: const InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: textFieldColor,
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: primaryColor,
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  cursorColor: primaryColor,
+                  maxLines: null,
+                ),
+              ),
             ),
           ],
         );

@@ -5,7 +5,10 @@ import '../constants/colors.dart';
 class AddButton extends StatelessWidget {
   const AddButton({
     Key? key,
+    required this.onPressed,
   }) : super(key: key);
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class AddButton extends StatelessWidget {
       width: 80,
       height: 40,
       child: TextButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: TextButton.styleFrom(
           primary: buttonTextColor,
           backgroundColor: primaryColor,
