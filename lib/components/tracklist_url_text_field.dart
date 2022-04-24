@@ -5,11 +5,15 @@ import '../constants/colors.dart';
 class TracklistURLTextField extends StatelessWidget {
   const TracklistURLTextField({
     Key? key,
+    required this.controller,
   }) : super(key: key);
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       style: const TextStyle(
         fontSize: 14.0,
       ),

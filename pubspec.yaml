@@ -47,6 +47,8 @@ dependencies:
 
   flutter_riverpod: ^1.0.3
 
+  gsheets: ^0.4.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,6 +81,9 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+
+  assets:
+    - .env/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
