@@ -62,11 +62,11 @@ class _AudioFileDropTargetState extends State<AudioFileDropTarget> {
   void updateTrack(BuildContext context, WidgetRef ref, Metadata metadata) {
     ref
         .read(trackProvider.notifier)
-        .update(getArtist(metadata), getTitle(metadata));
+        .update(artist: getArtist(metadata), title: getTitle(metadata));
   }
 
   void updateTrackWithBlank(BuildContext context, WidgetRef ref) {
-    ref.read(trackProvider.notifier).update("", "");
+    ref.read(trackProvider.notifier).update(artist: "", title: "");
   }
 
   String getArtist(Metadata metadata) {

@@ -22,7 +22,7 @@ class Track {
 class TrackNotifier extends StateNotifier<Track> {
   TrackNotifier() : super(const Track(artist: "", title: ""));
 
-  void update(String artist, String title) {
+  void update({String? artist, String? title}) {
     state = state.copyWith(artist, title);
   }
 }
