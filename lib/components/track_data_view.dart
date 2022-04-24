@@ -12,8 +12,9 @@ class TrackDataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _sheetController = TextEditingController();
+
     return Consumer(builder: (context, ref, child) {
-      final _sheetController = TextEditingController();
       final _artistController =
           TextEditingController(text: ref.watch(trackProvider).artist);
       final _titleController =
