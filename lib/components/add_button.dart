@@ -16,7 +16,7 @@ class AddButton extends StatelessWidget {
         onPressed: () {},
         style: TextButton.styleFrom(
           primary: buttonTextColor,
-          backgroundColor: buttonBgColor,
+          backgroundColor: primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32.0),
           ),
